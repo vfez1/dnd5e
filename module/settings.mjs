@@ -149,6 +149,19 @@ export function registerSystemSettings() {
     }
   });
 
+  // Show Damage Tray Buttons to Players
+  game.settings.register("dnd5e", "showDamageTrayButtonsToPlayers", {
+    name: "SETTINGS.5eShowDamageTrayButtonsToPlayersN",
+    hint: "SETTINGS.5eShowDamageTrayButtonsToPlayersL",
+    scope: "world",
+    config: true,
+    default: false,
+    type: Boolean,
+    onChange: s => {
+      ui.chat.render();
+    }
+  });
+
   // Collapse Chat Card Trays
   game.settings.register("dnd5e", "autoCollapseChatTrays", {
     name: "SETTINGS.DND5E.COLLAPSETRAYS.Name",

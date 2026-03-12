@@ -520,7 +520,7 @@ export default class ChatMessage5e extends ChatMessage {
         <section class="tooltip-part">
           <div class="dice">
             ${icon
-              ? `<span class="part-method" data-tooltip aria-label="${game.i18n.localize(method)}">${icon}</span>` : ""}
+    ? `<span class="part-method" data-tooltip aria-label="${game.i18n.localize(method)}">${icon}</span>` : ""}
             <ol class="dice-rolls">
               ${dice.reduce((str, { result, classes }) => `
                 ${str}<li class="roll ${classes}">${result}</li>
@@ -562,7 +562,7 @@ export default class ChatMessage5e extends ChatMessage {
       html.querySelector(".chat-card, .message-content")?.appendChild(p);
     }
 
-    if ( game.user.isGM ) {
+    if ( game.user.isGM || game.settings.get("dnd5e", "showDamageTrayButtonsToPlayers")) {
       const damageApplication = document.createElement("damage-application");
       damageApplication.damages = aggregateDamageRolls(rolls, { respectProperties: true }).map(roll => ({
         value: Math.max(0, roll.total),
